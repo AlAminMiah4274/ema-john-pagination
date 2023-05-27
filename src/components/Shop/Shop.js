@@ -42,8 +42,9 @@ const Shop = () => {
     useEffect(() => {
         const storedCart = getStoredCart();
         const savedCart = [];
-        const ids = Object.keys(storedCart);
+        const ids = Object.keys(storedCart); // to get ids of the stored products
 
+        // used post method to load data from the database
         fetch('http://localhost:5000/productsByIds', {
             method: 'POST',
             headers: {
@@ -106,7 +107,7 @@ const Shop = () => {
                 {
                     [...Array(pages).keys()].map(number => <button
                         key={number}
-                        className={page === number && 'selected'}
+                        className={page === number ? 'selected' : ''}
                         onClick={() => setPage(number)}
                     >
                         {/* added +1 to show pagination number from 1 instead of 0 */}
